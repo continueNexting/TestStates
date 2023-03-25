@@ -165,16 +165,14 @@ inline void MainMenu::update()
     font=TTF_OpenFont(pFileFont,fSize);
     foreground = {fR, fG, fB};
     texts+="ンオコソトノホ";
-    //foreground = {255, 255, 255,255};
+
     texts1 += "モ";
-    //foreground = {fR, fG, fB};
-    //Text text[430];
+
     std::vector<vec3> point;
     srand(time(NULL));
     for (int var = 0; var < 3150; ++var)
     {
-      //Text t;
-      //t.init(window,ren);
+
       SDL_Rect rect;
       rect.y=0;
       rect.x= rand() % 1920;
@@ -192,13 +190,7 @@ inline void MainMenu::update()
       point.push_back(x);
       dest.push_back(rect);
       if(var%7==0)dest.push_back(rect1);
-      // dest[var].y = 0;
-      // dest[var].x = rand() % 1920;
 
-      // dest[var].w = 15;
-
-      // dest[var].h = 29;
-      //text.push_back(t);
     }
     vec3 c{0, 0, 0};
     for (auto &p : point)
@@ -211,7 +203,7 @@ inline void MainMenu::update()
     c.y /= point.size();
     c.z /= point.size();
     int count=0;
-    //int count1=text.size()-1;
+
 
     
     while (!run)
@@ -224,18 +216,11 @@ inline void MainMenu::update()
       foreground = {255, 255, 255,255};
       text_surf1 = TTF_RenderUTF8_Blended_Wrapped(font, texts1.c_str(), foreground, 22);
       text1 = SDL_CreateTextureFromSurface(ren, text_surf1);
- //
 
-      // for (size_t i = 0; i < 430; i++)
-      // {
-      //   /* code */
-        
-      // }
-      
-      //SDL_Log("%d %d",dest.w,dest.h);
+
       for (auto &p : point)
       {
-        //if(count==point.size()-1) count=0;
+
         p.z += (rand() % 10)+1;
         if (p.z > widthW)
         {
@@ -244,20 +229,14 @@ inline void MainMenu::update()
 
         float sx = (p.x / p.y) * widthW + widthW / 2;
         float sy = (p.z / p.y) * heightW - heightW / 2;
-        
-        //SDL_Log("menu %f %f",sx,sy);
-        //dest[count].y=sy;
+
         pixel(&points,&dest,text_surf,text_surf1, sx, sy);
-        //count++;
         
       }
       show(points, dest,text,text1,ren);
 
       clear(&points,&dest);
-    //             for (size_t i = 0; i < 430; ++i)
-    // {
-    //   SDL_RenderCopy(ren, text, NULL, &dest[i]);
-    // }
+
       while (SDL_PollEvent(&e))
       {
         switch (e.type)
@@ -282,21 +261,9 @@ inline void MainMenu::update()
         break;
       }
 
-      
-
-      
-    
-    //SDL_DestroyTexture(text);
     SDL_FreeSurface(text_surf);
     SDL_FreeSurface(text_surf1);
-    //SDL_RenderPresent(ren);
 
-    //SDL_Log("menu");
-    //SDL_Delay(60);
-    // SDL_RenderClear(ren);
-    // SDL_Rect rect{0, 0, 1240, 720};
-    // SDL_RenderCopy(ren, NULL, NULL, &rect);
-    // SDL_RenderPresent(ren);
   }
 }
 void MainMenu::exit()
@@ -317,11 +284,11 @@ void MainMenu::show(std::vector<SDL_FPoint> points, std::vector<SDL_Rect> dest,S
   int count =0;
   for (auto &point : points)
   {
-    //if(count==points.size())count=0;
+
     SDL_RenderDrawPointF(ren, point.x, point.y);
     SDL_RenderCopy(ren, text, NULL, &dest[count++]);
     SDL_RenderCopy(ren, text1, NULL, &dest[count++]);
-    //count++;
+
   }
   SDL_DestroyTexture(text);
   SDL_DestroyTexture(text1);
@@ -348,7 +315,7 @@ void MainMenu::pixel(std::vector<SDL_FPoint> *points,std::vector<SDL_Rect> *dest
   rect1.x = x;
   rect1.w = text_surf1->w;
   rect1.h = text_surf1->h;
-  //dest->push_back(rect1);
+
   points->push_back(i);
   dest->push_back(rect1);
 }
@@ -454,43 +421,4 @@ void Intro::exit()
 Intro::~Intro() {}
 
 
-Text::Text(){}
-void Text::init(SDL_Window *window,SDL_Renderer *ren){
-pFileFont = "/home/jimmy/Downloads/Noto_Sans_KR/NotoSansKR-Light.otf";
-    buffer= SDL_GetWindowSurface(window);
-    SDL_FreeSurface(buffer);
-    buffer=NULL;
-    font=TTF_OpenFont(pFileFont,fSize);
-    foreground = {fR, fG, fB};
-    dest.y = 0;
-    dest.x = rand()%1920;
-    texts = "d";
-
-}
-void Text::draw(SDL_Renderer *ren){
-      text_surf = TTF_RenderUTF8_Blended_Wrapped(font, texts.c_str(), foreground, 20);
-      text = SDL_CreateTextureFromSurface(ren, text_surf);
-
- //
-      dest.w = 15;
-      
-      dest.h = 29;      
-      //dest.y++;
-
-}
-void Text::clears(SDL_Renderer *ren){
-    SDL_RenderCopy(ren, text, NULL, &dest);
-    SDL_DestroyTexture(text);
-    SDL_FreeSurface(text_surf);
-    SDL_RenderPresent(ren);
-}
-void Text::close(){
-  SDL_DestroyTexture(text);
-  IMG_Quit();
-  TTF_Quit();
-}
-Text::~Text()
-{
-
-}
 
