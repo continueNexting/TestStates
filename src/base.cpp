@@ -48,7 +48,6 @@ inline void MainMenu::update()
     SDL_Texture *text,*text1;
     SDL_Surface *text_surf;
     SDL_Surface *text_surf1;
-    //SDL_Rect dest[430];
     std::vector<SDL_Rect> dest;
     uint8_t fR = 19;
     uint8_t fG = 100;
