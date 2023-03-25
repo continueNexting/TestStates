@@ -22,16 +22,8 @@ struct vec3
 };
 inline void MainMenu::update()
 {
-    if (IMG_Init(IMG_INIT_PNG) < 0)
-    {
-        SDL_Log("IMG_Init(IMG_INIT_PNG): %s", IMG_GetError());
-        return;
-    }
-    if(TTF_Init()<0){
-      SDL_Log("TTF_Init()",TTF_GetError());
-    }
+
     Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 4096);
-    Mix_Init(MIX_INIT_MP3);
     music = Mix_LoadMUS("/home/jimmy/out.mp3");
 
     Mix_VolumeMusic(NULL);
