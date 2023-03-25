@@ -77,38 +77,4 @@ public:
   virtual ~Intro();
 };
 
-class Text
-{
-public:
-  const char *pFileFont;
-
-  SDL_Surface *buffer;
-
-  int fSize = 20;
-  TTF_Font *font;
-  std::string texts;
-  SDL_Color foreground;
-  SDL_Texture *text;
-  SDL_Surface *text_surf;
-  SDL_Rect dest;
-  uint8_t fR = 0;
-  uint8_t fG = 255;
-  uint8_t fB = 255;
-  uint8_t fA = 255;
-
-  uint8_t bR = 255;
-  uint8_t bG = 255;
-  uint8_t bB = 255;
-  uint8_t bA = 255;
-
-  Text();
-
-  void init(SDL_Window *window, SDL_Renderer *ren);
-  void draw(SDL_Renderer *ren);
-
-  void clears(SDL_Renderer *ren);
-  void close();
-  ~Text();
-};
-
 #endif//BASE_HPP
