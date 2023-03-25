@@ -18,7 +18,14 @@
 #include <chrono>
 
 
-static int k = SDL_Init(SDL_INIT_EVERYTHING);
+static int sdlInit = SDL_Init(SDL_INIT_EVERYTHING);
+
+static int sdlMusic = Mix_Init(MIX_INIT_MP3);
+
+static int sdlImg = IMG_Init(IMG_INIT_PNG); 
+static int sdlTtf = TTF_Init();
+
+
 static int widthW=1920;
 static int heightW=1080;
       
