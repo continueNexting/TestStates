@@ -302,7 +302,7 @@ void MainMenu::pixel(std::vector<SDL_FPoint> *points,std::vector<SDL_Rect> *dest
   rect.h = text_surf->h;
   dest->push_back(rect);
   SDL_Rect rect1;
-  rect1.y = y+75;
+  rect1.y = y+260;
   rect1.x = x;
   rect1.w = text_surf1->w;
   rect1.h = text_surf1->h;
